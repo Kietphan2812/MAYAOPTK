@@ -54,7 +54,15 @@
   @media (prefers-reduced-motion: no-preference) { .btn { transition: filter .15s; } }
 </style>
 
-<main>
+<div id="lock-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;padding:20px;">
+  <h2 style="margin-bottom:20px;text-align:center;">Trang web được bảo mật</h2>
+  <p style="margin-bottom:20px;text-align:center;color:var(--muted);">Vui lòng nhập mật khẩu để tiếp tục.</p>
+  <input type="password" id="pwd-input" style="padding:12px 16px;border-radius:8px;border:1px solid var(--line);font-size:16px;margin-bottom:16px;background:var(--surface);color:var(--fg);width:100%;max-width:300px;" placeholder="Mật khẩu...">
+  <button id="pwd-btn" class="btn" style="width:100%;max-width:300px;">Mở khóa</button>
+  <p id="pwd-error" style="color:#d93025;margin-top:16px;display:none;font-weight:500;">Mật khẩu không đúng!</p>
+</div>
+
+<main id="main-content" style="display: none;">
   <header>
     <span class="tag">Chrome Remote Desktop</span>
     <h1>Truy cập MAYPTK</h1>
@@ -105,6 +113,33 @@
         var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Đã chọn, nhấn Ctrl+C');
       }
     });
+
+    var lockScreen = document.getElementById('lock-screen');
+    var mainContent = document.getElementById('main-content');
+    var pwdInput = document.getElementById('pwd-input');
+    var pwdBtn = document.getElementById('pwd-btn');
+    var pwdError = document.getElementById('pwd-error');
+
+    function checkPassword() {
+      if (pwdInput.value === 'cntt2812') {
+        lockScreen.style.display = 'none';
+        mainContent.style.display = 'flex';
+        localStorage.setItem('site_unlocked', 'true');
+      } else {
+        pwdError.style.display = 'block';
+      }
+    }
+
+    pwdBtn.addEventListener('click', checkPassword);
+    pwdInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    // Tự động vào nếu đã từng nhập đúng
+    if (localStorage.getItem('site_unlocked') === 'true') {
+      lockScreen.style.display = 'none';
+      mainContent.style.display = 'flex';
+    }
   })();
 </script>
 
