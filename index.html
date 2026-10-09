@@ -122,9 +122,9 @@
 
     function checkPassword() {
       if (pwdInput.value === 'cntt2812') {
-        lockScreen.style.display = 'none';
-        mainContent.style.display = 'flex';
         localStorage.setItem('site_unlocked', 'true');
+        // Tự động chuyển thẳng sang trang Chrome Remote Desktop
+        window.location.href = 'https://remotedesktop.google.com/access';
       } else {
         pwdError.style.display = 'block';
       }
@@ -135,10 +135,9 @@
       if (e.key === 'Enter') checkPassword();
     });
 
-    // Tự động vào nếu đã từng nhập đúng
+    // Tự động chuyển nếu đã từng nhập đúng
     if (localStorage.getItem('site_unlocked') === 'true') {
-      lockScreen.style.display = 'none';
-      mainContent.style.display = 'flex';
+      window.location.href = 'https://remotedesktop.google.com/access';
     }
   })();
 </script>
