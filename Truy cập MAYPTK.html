@@ -1,0 +1,111 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Truy cập MAYPTK</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  /* Layout: một cột hẹp, nút mở trang ở trên cùng, 2 bước bên dưới, danh sách kiểm tra máy MAYPTK ở cuối */
+  :root {
+    --bg: #F3F5F7;
+    --surface: #FFFFFF;
+    --fg: #14202B;
+    --muted: #55646F;
+    --line: #D9E0E6;
+    --accent: #1B5FD1;
+    --accent-fg: #FFFFFF;
+    --ok: #17794A;
+    --font: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F171F; --surface: #17222C; --fg: #E8EEF3; --muted: #9AAAB6;
+      --line: #2A3946; --accent: #6FA3F5; --accent-fg: #0B1620; --ok: #55C98F;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F171F; --surface: #17222C; --fg: #E8EEF3; --muted: #9AAAB6;
+    --line: #2A3946; --accent: #6FA3F5; --accent-fg: #0B1620; --ok: #55C98F;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 17px; line-height: 1.55; padding-inline: 16px; padding-block: 40px 56px; }
+  main { max-width: 600px; margin-inline: auto; display: flex; flex-direction: column; gap: 28px; }
+  header { display: flex; flex-direction: column; gap: 8px; }
+  .tag { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-size: clamp(30px, 8vw, 40px); line-height: 1.1; font-weight: 700; text-wrap: balance; margin: 0; }
+  header p { margin: 0; color: var(--muted); }
+  .go { display: flex; flex-direction: column; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .btn { display: block; text-align: center; text-decoration: none; background: var(--accent); color: var(--accent-fg); font-weight: 600; font-size: 19px; padding: 16px 20px; border-radius: 10px; }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:focus-visible, .copy:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
+  .urlrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .url { flex: 1; min-width: 0; font-family: var(--mono); font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+  .copy { font: inherit; font-size: 15px; font-weight: 500; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+  .copy:hover { border-color: var(--accent); }
+  h2 { font-size: 20px; margin: 0 0 12px; font-weight: 600; }
+  ol, ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  ol li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; }
+  .n { font-family: var(--mono); font-size: 15px; font-weight: 500; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; background: var(--surface); }
+  li div { min-width: 0; }
+  li small { display: block; color: var(--muted); font-size: 15px; }
+  .private { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; color: var(--muted); font-size: 16px; }
+  ul li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 16px; }
+  ul li::before { content: ""; width: 18px; height: 18px; margin-top: 4px; border: 2px solid var(--ok); border-radius: 5px; }
+  .note { font-size: 15px; color: var(--muted); margin: 0; }
+  @media (prefers-reduced-motion: no-preference) { .btn { transition: filter .15s; } }
+</style>
+
+<main>
+  <header>
+    <span class="tag">Chrome Remote Desktop</span>
+    <h1>Truy cập MAYPTK</h1>
+    <p>Mở trang điều khiển máy từ xa của tài khoản cntt2812. Việc đăng nhập diễn ra ở trang chính thức của Google, không nhập mật khẩu ở đây.</p>
+  </header>
+
+  <section class="go" aria-label="Mở trang">
+    <a class="btn" id="open" href="https://remotedesktop.google.com/access" target="_blank" rel="noopener">Mở Chrome Remote Desktop</a>
+    <div class="urlrow">
+      <span class="url" id="url">https://remotedesktop.google.com/access</span>
+      <button class="copy" id="copy" type="button">Sao chép</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mỗi lần dùng</h2>
+    <ol>
+      <li><span class="n">1</span><div><b>Đăng nhập cntt2812@gmail.com</b><small>Nhập mật khẩu của tài khoản này trên trang Google.</small></div></li>
+      <li><span class="n">2</span><div><b>Bấm MAYPTK, rồi nhập PIN</b><small>PIN là mã bạn đặt khi cài trên máy MAYPTK.</small></div></li>
+    </ol>
+  </section>
+
+  <p class="private"><b>Máy mượn hoặc máy chung:</b> nhấn Ctrl + Shift + N để mở cửa sổ ẩn danh trước khi bấm nút, và đăng xuất khi dùng xong.</p>
+
+  <section>
+    <h2>Máy MAYPTK cần sẵn sàng</h2>
+    <ul>
+      <li>Đang bật, có Internet, cắm sạc nếu là laptop</li>
+      <li>Sleep đặt là Never (Settings, System, Power &amp; sleep)</li>
+      <li>Laptop: đóng nắp vẫn chạy (Choose what closing the lid does, Do nothing)</li>
+      <li>Trang Chrome Remote Desktop hiện MAYPTK là Trực tuyến</li>
+    </ul>
+    <p class="note" style="margin-top:14px">Máy tắt hẳn hoặc mất điện thì không kết nối được.</p>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy');
+    var text = document.getElementById('url').textContent;
+    btn.addEventListener('click', function () {
+      function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Sao chép'; }, 1600); }
+      try {
+        navigator.clipboard.writeText(text).then(function () { done('Đã chép'); }, function () { sel(); });
+      } catch (e) { sel(); }
+      function sel() {
+        var r = document.createRange(); r.selectNodeContents(document.getElementById('url'));
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Đã chọn, nhấn Ctrl+C');
+      }
+    });
+  })();
+</script>
+
+</body></html>
