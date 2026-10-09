@@ -123,8 +123,8 @@
     function checkPassword() {
       if (pwdInput.value === 'cntt2812') {
         localStorage.setItem('site_unlocked', 'true');
-        // Tự động chuyển thẳng sang trang Chrome Remote Desktop với tài khoản được chỉ định
-        window.location.href = 'https://remotedesktop.google.com/access?authuser=cntt2812@gmail.com';
+        // Ép Google điền sẵn email và tự động chuyển về trang Remote Desktop
+        window.location.href = 'https://accounts.google.com/AccountChooser?Email=cntt2812@gmail.com&continue=https://remotedesktop.google.com/access';
       } else {
         pwdError.style.display = 'block';
       }
@@ -137,7 +137,7 @@
 
     // Tự động chuyển nếu đã từng nhập đúng
     if (localStorage.getItem('site_unlocked') === 'true') {
-      window.location.href = 'https://remotedesktop.google.com/access?authuser=cntt2812@gmail.com';
+      window.location.href = 'https://accounts.google.com/AccountChooser?Email=cntt2812@gmail.com&continue=https://remotedesktop.google.com/access';
     }
   })();
 </script>
